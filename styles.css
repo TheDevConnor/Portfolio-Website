@@ -1,33 +1,40 @@
 :root {
     /* Dark theme (default) */
-    --bg-primary: #0c0c0c;
-    --bg-secondary: #1a1a1a;
-    --bg-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
-    --text-primary: #ffffff;
-    --text-secondary: #cccccc;
-    --text-muted: #666666;
-    --accent-primary: #667eea;
-    --accent-secondary: #764ba2;
-    --border-color: rgba(255, 255, 255, 0.1);
-    --card-bg: rgba(255, 255, 255, 0.05);
-    --header-bg: rgba(12, 12, 12, 0.8);
-    --shadow-color: rgba(0, 0, 0, 0.3);
+    --bg-primary: #23272A; /* anchor */
+    --bg-secondary: #1b1e20;
+    --bg-gradient: linear-gradient(135deg, #23272A 0%, #1b1e20 100%);
+    
+    --text-primary: #f5f6f7; 
+    --text-secondary: #cfd2d4;
+    --text-muted: #8a8d90;
+    
+    --accent-primary: #4ea8de;   /* cyan-blue */
+    --accent-secondary: #9d4edd; /* rich purple */
+    
+    --border-color: rgba(255, 255, 255, 0.08);
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --header-bg: rgba(35, 39, 42, 0.4);
+    --shadow-color: rgba(0, 0, 0, 0.4);
 }
 
 [data-theme="light"] {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f8f9fa;
-    --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    --bg-primary: #DCDDDE; /* anchor */
+    --bg-secondary: #f6f6f7;
+    --bg-gradient: linear-gradient(135deg, #DCDDDE 0%, #e5e6e7 100%);
+    
     --text-primary: #212529;
-    --text-secondary: #495057;
+    --text-secondary: #44484c;
     --text-muted: #6c757d;
-    --accent-primary: #667eea;
-    --accent-secondary: #764ba2;
+    
+    --accent-primary: #1971c2;   /* deep blue */
+    --accent-secondary: #7048e8; /* deep violet */
+    
     --border-color: rgba(0, 0, 0, 0.1);
-    --card-bg: rgba(255, 255, 255, 0.8);
-    --header-bg: rgba(255, 255, 255, 0.9);
-    --shadow-color: rgba(0, 0, 0, 0.1);
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --header-bg: rgba(220, 221, 222, 0.6);
+    --shadow-color: rgba(0, 0, 0, 0.08);
 }
+
 
 * {
     margin: 0;
@@ -49,7 +56,7 @@ body {
 
 @keyframes konamiFlash {
     from {
-        background: #0c0c0c;
+        background: #23272A;
     }
 
     to {
@@ -304,7 +311,7 @@ header {
     left: 0;
     right: 0;
     z-index: 1000;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     background: var(--header-bg);
     border-bottom: 1px solid var(--border-color);
     transition: background 0.3s ease, border-color 0.3s ease;
@@ -682,8 +689,7 @@ nav {
 .secret-hint {
     position: fixed;
     bottom: 10px;
-    /* right: 15px; */
-    left: 15px;
+    left: 30px;
     opacity: 0.02;
     font-size: 1.5rem;
     color: var(--accent-secondary);
@@ -741,6 +747,9 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .logo {
+        font-size: 1rem
+    }
     .nav-links {
         position: fixed;
         top: 70px;
