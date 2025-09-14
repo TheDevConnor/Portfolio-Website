@@ -69,6 +69,52 @@ hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active");
 });
 
+let backgroundOnly = false;
+let toastShown = false; // track if we've already shown it once
+
+function toggleBackgroundMode() {
+    backgroundOnly = !backgroundOnly;
+    const bgToggleBtn = document.getElementById("backgroundToggle");
+
+    if (backgroundOnly) {
+        document.body.classList.add("background-only");
+        if (bgToggleBtn) bgToggleBtn.querySelector("span").textContent = "Show Content";
+
+        // Show toast only the first time
+        if (!toastShown) {
+            showToast("Background mode enabled (press F again to restore)");
+            toastShown = true;
+        }
+    } else {
+        document.body.classList.remove("background-only");
+        if (bgToggleBtn) bgToggleBtn.querySelector("span").textContent = "Background Only";
+    }
+}
+
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    if (!toast) return;
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000); // visible for 3 seconds
+}
+
+// Keyboard shortcut
+document.addEventListener("keydown", (e) => {
+    if (e.key.toLowerCase() === "f") {
+        toggleBackgroundMode();
+    }
+});
+
+// Button click
+const bgToggleBtn = document.getElementById("backgroundToggle");
+if (bgToggleBtn) {
+    bgToggleBtn.addEventListener("click", toggleBackgroundMode);
+}
 
 // Animated Background Logic
 const wrapper = document.getElementById("wrapper");
@@ -79,16 +125,18 @@ const uniqueRand = (min, max, prev) => {
     let next = prev;
     while (prev === next) next = rand(min, max);
     return next;
-}
+};
 
-const combinations = [
-    { configuration: 1, roundness: 1 },
-    { configuration: 1, roundness: 2 },
-    { configuration: 2, roundness: 2 },
-    { configuration: 2, roundness: 3 },
-    { configuration: 3, roundness: 3 },
-    { configuration: 3, roundness: 1 }
-];
+// Generate all possible combinations dynamically
+const configurations = [1, 2, 3];
+const roundnessLevels = [1, 2, 3];
+
+const combinations = [];
+configurations.forEach(cfg => {
+    roundnessLevels.forEach(rnd => {
+        combinations.push({ configuration: cfg, roundness: rnd });
+    });
+});
 
 let prev = 0;
 

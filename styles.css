@@ -50,6 +50,12 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
+.toggles {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
 .konami-active {
     animation: konamiFlash 0.5s ease-in-out alternate 3;
 }
@@ -723,6 +729,63 @@ nav {
     opacity: 1;
 }
 
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(20px);
+    z-index: 3000;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hide foreground + remove blur */
+.background-only .hero,
+.background-only .section,
+.background-only footer {
+    display: none !important;
+}
+
+.background-only #background-wrapper {
+    filter: none !important;
+    opacity: 1 !important;
+    background: var(--bg-gradient) !important;
+}
+
+.background-toggle {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.background-toggle:hover {
+    background: var(--accent-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
 /* Footer */
 footer {
     text-align: center;
@@ -747,9 +810,32 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .logo {
-        font-size: 1rem
+    .toggles {
+        flex-direction: row;
+        gap: 0.5rem;
     }
+
+    .theme-toggle,
+    .background-toggle {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+        border-radius: 25px;
+    }
+
+    .theme-toggle i,
+    .background-toggle i {
+        font-size: 0.8rem;
+    }
+
+    .theme-toggle span,
+    .background-toggle span {
+        display: none; /* hide text, show only icons on small screens */
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
     .nav-links {
         position: fixed;
         top: 70px;

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
+<div id="toast" class="toast">Background mode enabled (press F again to restore)</div>
 <body>
     <!-- Animated Background -->
     <div id="background-wrapper">
@@ -30,10 +31,16 @@
         <nav>
             <div class="nav-left">
                 <div class="logo">Connor Harris</div>
-                <button class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i>
-                    <span>Dark</span>
-                </button>
+                <div class="toggles">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                        <span>Dark</span>
+                    </button>
+                    <button class="background-toggle" id="backgroundToggle">
+                        <i class="fas fa-image"></i>
+                        <span>Background</span>
+                    </button>
+                </div>
             </div>
             <div class="nav-right">
                 <button class="hamburger" id="hamburger">
