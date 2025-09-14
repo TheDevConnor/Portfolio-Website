@@ -3,6 +3,39 @@ const themeToggle = document.getElementById('themeToggle');
 const themeIcon = themeToggle.querySelector('i');
 const themeText = themeToggle.querySelector('span');
 
+document.addEventListener("DOMContentLoaded", () => {
+    const hintEncoded = "4oaRIOKGkSDihpMg4oaTIOKGkCDihpIg4oaQIOKGkiBCIEE=";
+
+    const div = document.createElement("div");
+    div.className = "secret-hint";
+
+    const icon = document.createElement("i");
+    icon.className = "fas fa-gamepad";
+
+    const span = document.createElement("span");
+    span.className = "secret-text";
+
+    div.appendChild(icon);
+    div.appendChild(span);
+    document.body.appendChild(div);
+
+    // Decode on hover
+    div.addEventListener("mouseenter", () => {
+        span.textContent = b64DecodeUnicode(hintEncoded);
+    });
+
+    // Hide on mouse leave
+    div.addEventListener("mouseleave", () => {
+        span.textContent = ""; // Or leave as Base64 if you prefer
+    });
+});
+
+function b64DecodeUnicode(str) {
+    const bytes = atob(str);
+    const arr = Uint8Array.from(bytes, c => c.charCodeAt(0));
+    return new TextDecoder('utf-8').decode(arr);
+}
+
 // Check for saved theme preference or default to 'dark'
 const currentTheme = localStorage.getItem('theme') || 'dark';
 document.documentElement.setAttribute('data-theme', currentTheme);
@@ -32,8 +65,8 @@ const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("navLinks");
 
 hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("show");
-  hamburger.classList.toggle("active");
+    navLinks.classList.toggle("show");
+    hamburger.classList.toggle("active");
 });
 
 
