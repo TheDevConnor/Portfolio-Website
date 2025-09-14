@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connor Harris - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div id="background-wrapper">
+        <div id="wrapper" data-configuration="1" data-roundness="1">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="nav-left">
+                <div class="logo">Connor Harris</div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark</span>
+                </button>
+            </div>
+            <div class="nav-right">
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hello, I'm Connor</h1>
+            <p>Systems Programmer • Language Designer • CS Student</p>
+            <a href="#about" class="cta-button">Explore My Work</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Passionate Systems Programmer</h3>
+                    <p>I'm a 20-year-old self-taught programmer with 5 years of experience, currently pursuing a
+                        Bachelor's in Computer Science at Florida Polytechnic University. I'm passionate about creating
+                        developer tools and low-level systems programming.</p>
+                    <p>Currently working on two programming languages — Zura and Lux — designed to make coding cleaner,
+                        simpler, and more powerful. Most of my learning comes from exploring, building, and learning
+                        from others online.</p>
+                    <div class="skills">
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">Assembly</span>
+                        <span class="skill-tag">Zig</span>
+                        <span class="skill-tag">Compiler Design</span>
+                        <span class="skill-tag">Git/GitHub</span>
+                        <span class="skill-tag">Linux/Unix</span>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="img/image_copy.png" alt="Connor Harris" class="profile-image"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="profile-image-fallback" style="display: none;">
+                        <i class="fas fa-code"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+
+                <!-- Zura -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <h3>Zura Programming Language</h3>
+                    <p>A custom low-level programming language written in C++ and compiled to x86 assembly. Designed for
+                        clean, simple, and powerful system-level programming.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/TheDevConnor/Zura-Transpiled/" target="_blank"
+                            class="project-link">GitHub</a>
+                        <a href="https://www.zuralang.com/docs.html" target="_blank" class="project-link">Docs</a>
+                        <a href="https://www.zuralang.com/" target="_blank" class="project-link">Website</a>
+                        <a href="https://discord.com/invite/JvExQpGuXM" target="_blank" class="project-link">Discord</a>
+                    </div>
+                </div>
+
+                <!-- Lux -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Lux Programming Language</h3>
+                    <p>A modern low-level programming language written in C and compiled with LLVM. Focused on
+                        performance and developer experience.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/TheDevConnor/Luma" target="_blank" class="project-link">GitHub</a>
+                        <a href="https://bit.ly/lux-discord" target="_blank" class="project-link">Discord</a>
+                    </div>
+                </div>
+
+                <!-- Chess Engine -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-chess-knight"></i>
+                    </div>
+                    <h3>Chess Engine</h3>
+                    <p>A sophisticated chess engine written in Python, featuring advanced algorithms for move generation
+                        and position evaluation.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/TheDevConnor/Basic-Python-Chess-Engine" target="_blank"
+                            class="project-link">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Terminal Website -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <h3>Terminal Website</h3>
+                    <p>A terminal-based portfolio website with command-line style interaction.</p>
+                    <div class="project-links">
+                        <a href="https://thedevconnor.github.io/TerminalWebsite/" target="_blank"
+                            class="project-link">View
+                            Site</a>
+                        <a href="https://www.youtube.com/watch?v=savPJTlsv2k&t=22s" target="_blank"
+                            class="project-link">YouTube</a>
+                    </div>
+                </div>
+
+                <!-- Wordle Clone -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h3>Wordle Clone</h3>
+                    <p>A fully functional Wordle clone built with HTML, CSS, and JavaScript. Features smooth animations
+                        and responsive design.</p>
+                    <div class="project-links">
+                        <a href="https://thedevconnor.github.io/Wordle-Clone/" target="_blank" class="project-link">Play
+                            Game</a>
+                        <a href="https://www.youtube.com/watch?v=savPJTlsv2k&t=22s" target="_blank"
+                            class="project-link">Watch Demo</a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Website Repo -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Portfolio Website</h3>
+                    <p>The source code for this portfolio site. Built with HTML, CSS, and JavaScript for a clean and
+                        modern feel.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/TheDevConnor/Portfolio-Website" target="_blank"
+                            class="project-link">GitHub</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-content">
+                <p>I'm always interested in new opportunities, exciting projects, and connecting with fellow developers.
+                    Let's discuss how we can collaborate!</p>
+                <div class="contact-links">
+                    <a href="mailto:connorharris427@gmail.com" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                        Email Me
+                    </a>
+                    <a href="https://github.com/TheDevConnor" class="contact-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                    <a href="#" class="contact-link">
+                        <i class="fab fa-discord"></i>
+                        thedevconnor
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Connor Harris. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="secret-hint" title="Something feels... nostalgic">
+        <i class="fas fa-gamepad"></i>
+        <span class="secret-text">↑ ↑ ↓ ↓ ← → ← → B A</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
