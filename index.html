@@ -12,6 +12,7 @@
 </head>
 
 <div id="toast" class="toast">Background mode enabled (press F again to restore)</div>
+
 <body>
     <!-- Animated Background -->
     <div id="background-wrapper">
@@ -209,22 +210,54 @@
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">Let's Connect</h2>
-            <div class="contact-content">
-                <p>I'm always interested in new opportunities, exciting projects, and connecting with fellow developers.
-                    Let's discuss how we can collaborate!</p>
-                <div class="contact-links">
-                    <a href="mailto:connorharris427@gmail.com" class="contact-link">
-                        <i class="fas fa-envelope"></i>
-                        Email Me
-                    </a>
-                    <a href="https://github.com/TheDevConnor" class="contact-link" target="_blank">
-                        <i class="fab fa-github"></i>
-                        GitHub
-                    </a>
-                    <a href="#" class="contact-link">
-                        <i class="fab fa-discord"></i>
-                        thedevconnor
-                    </a>
+            <div class="contact-wrapper">
+                <div class="contact-form-container">
+                    <h3>Send me a message</h3>
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/movklaqv"
+                        method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="_subject" required placeholder="What's this about?">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required
+                                placeholder="Your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">
+                            <i class="fas fa-paper-plane"></i>
+                            <span class="button-text">Send Message</span>
+                            <span class="button-loading" style="display: none;">Sending...</span>
+                        </button>
+                        <div class="form-status" id="formStatus"></div>
+                    </form>
+                </div>
+                <div class="contact-content">
+                    <p>I'm always interested in new opportunities, exciting projects, and connecting with fellow
+                        developers.
+                        Let's discuss how we can collaborate!</p>
+                    <div class="contact-links">
+                        <a href="https://www.youtube.com/@thedevconnor" class="contact-link">
+                            <i class="fas fab fa-youtube"></i>
+                            Youtube
+                        </a>
+                        <a href="https://github.com/TheDevConnor" class="contact-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                        <a href="#" class="contact-link">
+                            <i class="fab fa-discord"></i>
+                            thedevconnor
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

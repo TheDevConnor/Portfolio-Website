@@ -82,7 +82,7 @@ function toggleBackgroundMode() {
 
         // Show toast only the first time
         if (!toastShown) {
-            showToast("Background mode enabled (press F again to restore)");
+            showToast("Background mode enabled!");
             toastShown = true;
         }
     } else {
@@ -102,13 +102,6 @@ function showToast(message) {
         toast.classList.remove("show");
     }, 3000); // visible for 3 seconds
 }
-
-// Keyboard shortcut
-document.addEventListener("keydown", (e) => {
-    if (e.key.toLowerCase() === "f") {
-        toggleBackgroundMode();
-    }
-});
 
 // Button click
 const bgToggleBtn = document.getElementById("backgroundToggle");
@@ -266,6 +259,54 @@ const scrollToTop = () => {
         behavior: 'smooth'
     });
 };
+
+// Contact form submission with Formspree
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const submitButton = this.querySelector('.submit-button');
+        const buttonText = submitButton.querySelector('.button-text');
+        const buttonLoading = submitButton.querySelector('.button-loading');
+        const formStatus = document.getElementById('formStatus');
+        
+        // Disable button and show loading state
+        submitButton.disabled = true;
+        buttonText.style.display = 'none';
+        buttonLoading.style.display = 'inline';
+        formStatus.textContent = '';
+        formStatus.className = 'form-status';
+        
+        try {
+            const formData = new FormData(this);
+            const response = await fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                formStatus.textContent = 'Thanks for your message! I\'ll get back to you soon.';
+                formStatus.classList.add('success');
+                this.reset();
+                showToast("Message sent successfully!");
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            formStatus.textContent = 'Oops! There was a problem sending your message. Please try again or email me directly.';
+            formStatus.classList.add('error');
+        } finally {
+            // Re-enable button and restore original state
+            submitButton.disabled = false;
+            buttonText.style.display = 'inline';
+            buttonLoading.style.display = 'none';
+        }
+    });
+}
 
 // Show/hide scroll-to-top button based on scroll position
 window.addEventListener('scroll', () => {
