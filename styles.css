@@ -78,6 +78,11 @@ section {
     line-height: 1.8;
 }
 
+.hero-bio strong {
+    color: var(--accent);
+    font-weight: 600;
+}
+
 /* Section Headers */
 h2 {
     font-size: 2rem;
