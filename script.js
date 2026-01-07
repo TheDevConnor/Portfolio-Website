@@ -3,11 +3,11 @@ function calculateAge(birthDate) {
     const birth = new Date(birthDate);
     let age = today.getFullYear() - birth.getFullYear();
     const monthDiff = today.getMonth() - birth.getMonth();
-    
+
     if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
         age--;
     }
-    
+
     return age;
 }
 
@@ -16,47 +16,35 @@ function calculateExperience(startYear) {
     return currentYear - startYear;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const age = calculateAge('2004-11-24');
     const ageElement = document.getElementById('age');
     if (ageElement) ageElement.textContent = age;
-    
+
     const experience = calculateExperience(2019);
     const expElement = document.getElementById('experience');
     if (expElement) expElement.textContent = experience;
-    
-    // Current year for copyright
+
     const yearElement = document.getElementById('year');
     if (yearElement) yearElement.textContent = new Date().getFullYear();
 });
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
-
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
+    contactForm.addEventListener('submit', async function (e) {
         e.preventDefault();
-        
+
         const submitBtn = this.querySelector('.submit-btn');
         const btnText = submitBtn.querySelector('.btn-text');
         const btnLoading = submitBtn.querySelector('.btn-loading');
         const formStatus = document.getElementById('formStatus');
-        
+
         submitBtn.disabled = true;
         btnText.style.display = 'none';
         btnLoading.style.display = 'inline';
         formStatus.style.display = 'none';
         formStatus.className = 'form-status';
-        
+
         try {
             const formData = new FormData(this);
             const response = await fetch(this.action, {
@@ -64,7 +52,7 @@ if (contactForm) {
                 body: formData,
                 headers: { 'Accept': 'application/json' }
             });
-            
+
             if (response.ok) {
                 formStatus.textContent = 'Thanks for your message! I\'ll get back to you soon.';
                 formStatus.classList.add('success');

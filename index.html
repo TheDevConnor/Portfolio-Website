@@ -1,46 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connor Harris</title>
+    <title>Connor Harris - Portfolio</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <main class="container">
-        <section id="about">
-            <div class="about-grid">
-                <div class="profile-img-wrapper">
-                    <img src="img/image.png" alt="Connor Harris" class="profile-img" onerror="this.style.display='none'">
-                </div>
-                <div class="about-content">
-                    <h1>Systems Programmer</h1>
-                    <p class="subtitle">Building developer tools and programming languages</p>
-                    
-                    <p>I'm a <span id="age"></span>-year-old self-taught programmer with <span id="experience"></span> years of experience, currently pursuing a CS degree at Florida Polytechnic University. I specialize in low-level systems programming and compiler design.</p>
-                    
-                    <p>Currently developing two programming languages: Zura (C++ → x86 assembly) and Luma (C → LLVM).</p>
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="profile-img-wrapper">
+                <img src="img/image.png" alt="Connor Harris" class="profile-img" onerror="this.style.display='none'">
+            </div>
+            <div class="hero-content">
+                <h1>Connor Harris</h1>
+                <p class="hero-subtitle">Systems Programmer • <span id="age"></span> years old • <span
+                        id="experience"></span> years experience</p>
+                <p class="hero-bio">Self-taught programmer passionate about building developer tools and programming
+                    languages. I specialize in low-level systems programming, compiler design, and creating tools that
+                    make developers' lives easier. CS student at Florida Polytechnic University.</p>
+            </div>
+        </div>
 
-                    <div class="skills">
+        <!-- About Section -->
+        <section id="about" style="display: none;">
+            <h2>About</h2>
+            <div class="about-content">
+                <p>I'm a self-taught programmer passionate about building developer tools and programming languages. My
+                    focus is on low-level systems programming, compiler design, and creating tools that make developers'
+                    lives easier.</p>
+                <p>Currently working on Zura (C++ compiled to x86 assembly) and Luma (C compiled with LLVM), both
+                    designed to offer clean syntax and powerful system-level capabilities.</p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills & Technologies</h2>
+            <p class="section-intro">Currently developing two programming languages: <strong>Zura</strong> (C++ compiled
+                to x86 assembly) and <strong>Luma</strong> (C compiled with LLVM).</p>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-list">
                         <span class="skill">C++</span>
                         <span class="skill">C</span>
                         <span class="skill">Python</span>
                         <span class="skill">JavaScript</span>
                         <span class="skill">Assembly</span>
                         <span class="skill">Zig</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Specializations</h3>
+                    <div class="skill-list">
                         <span class="skill">Compiler Design</span>
                         <span class="skill">LLVM</span>
+                        <span class="skill">Systems Programming</span>
+                        <span class="skill">x86 Assembly</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <div class="skill-list">
+                        <span class="skill">Git/GitHub</span>
+                        <span class="skill">Linux/Unix</span>
+                        <span class="skill">VS Code</span>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Projects Section -->
         <section id="projects">
-            <h2>Projects</h2>
-            
             <div class="terminal">
                 <div class="terminal-header">
                     <div class="terminal-dot"></div>
@@ -53,7 +91,8 @@
                         <span class="terminal-prompt">$</span>
                         <div class="terminal-content">
                             <div class="project-name">ls -la zura/</div>
-                            <div class="project-desc">Low-level programming language written in C++ and compiled to x86 assembly. Designed for clean, simple system-level programming.</div>
+                            <div class="project-desc">Low-level programming language written in C++ and compiled to x86
+                                assembly. Designed for clean, simple system-level programming.</div>
                             <div class="project-links">
                                 <a href="https://github.com/TheDevConnor/Zura-Transpiled/" target="_blank">[GitHub]</a>
                                 <a href="https://www.zuralang.com/docs.html" target="_blank">[Docs]</a>
@@ -66,7 +105,8 @@
                         <span class="terminal-prompt">$</span>
                         <div class="terminal-content">
                             <div class="project-name">ls -la luma/</div>
-                            <div class="project-desc">Modern low-level programming language written in C and compiled with LLVM. Focus on performance and developer experience.</div>
+                            <div class="project-desc">Modern low-level programming language written in C and compiled
+                                with LLVM. Focus on performance and developer experience.</div>
                             <div class="project-links">
                                 <a href="https://github.com/TheDevConnor/Luma" target="_blank">[GitHub]</a>
                                 <a href="https://luma-website-mu.vercel.app/" target="_blank">[Website]</a>
@@ -79,9 +119,11 @@
                         <span class="terminal-prompt">$</span>
                         <div class="terminal-content">
                             <div class="project-name">ls -la chess-engine/</div>
-                            <div class="project-desc">Chess engine in Python with advanced algorithms for move generation and position evaluation.</div>
+                            <div class="project-desc">Chess engine in Python with advanced algorithms for move
+                                generation and position evaluation.</div>
                             <div class="project-links">
-                                <a href="https://github.com/TheDevConnor/Basic-Python-Chess-Engine" target="_blank">[GitHub]</a>
+                                <a href="https://github.com/TheDevConnor/Basic-Python-Chess-Engine"
+                                    target="_blank">[GitHub]</a>
                             </div>
                         </div>
                     </div>
@@ -101,7 +143,8 @@
                         <span class="terminal-prompt">$</span>
                         <div class="terminal-content">
                             <div class="project-name">ls -la wordle-clone/</div>
-                            <div class="project-desc">Fully functional Wordle clone with smooth animations and responsive design.</div>
+                            <div class="project-desc">Fully functional Wordle clone with smooth animations and
+                                responsive design.</div>
                             <div class="project-links">
                                 <a href="https://thedevconnor.github.io/Wordle-Clone/" target="_blank">[Play]</a>
                             </div>
@@ -116,12 +159,14 @@
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact">
-            <h2>Contact</h2>
-            
+            <h2>Get In Touch</h2>
+
             <div class="contact-grid">
                 <div class="contact-form-wrapper">
-                    <p>Open to opportunities and collaboration.</p>
+                    <p>I'm open to opportunities, collaborations, and interesting conversations. Feel free to reach out!
+                    </p>
                     <form class="contact-form" id="contactForm" action="https://formspree.io/f/movklaqv" method="POST">
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -133,7 +178,8 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Your message..."></textarea>
+                            <textarea id="message" name="message" rows="5" required
+                                placeholder="Your message..."></textarea>
                         </div>
                         <button type="submit" class="submit-btn">
                             <span class="btn-text">Send Message</span>
@@ -144,7 +190,7 @@
                 </div>
 
                 <div class="contact-links-wrapper">
-                    <h3>Find me online</h3>
+                    <h3>Find Me Online</h3>
                     <div class="contact-links">
                         <a href="https://github.com/TheDevConnor" class="contact-link" target="_blank">
                             <i class="fab fa-github"></i>
@@ -172,4 +218,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
