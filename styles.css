@@ -83,14 +83,17 @@ section {
     font-weight: 600;
 }
 
+.resume-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
 .resume-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 1.5rem;
     padding: 0.75rem 1.5rem;
-    background: var(--accent);
-    color: var(--bg);
     text-decoration: none;
     border-radius: 6px;
     font-weight: 600;
@@ -98,8 +101,25 @@ section {
     transition: all 0.2s;
 }
 
-.resume-btn:hover {
+.resume-btn.view {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.resume-btn.view:hover {
     background: var(--accent-dim);
+    transform: translateY(-2px);
+}
+
+.resume-btn.download {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--border);
+}
+
+.resume-btn.download:hover {
+    background: rgba(88, 166, 255, 0.1);
+    border-color: var(--accent);
     transform: translateY(-2px);
 }
 
@@ -162,84 +182,139 @@ h2 {
     color: var(--text);
 }
 
-/* Projects Section - Terminal Style */
-.terminal {
-    background: var(--bg-light);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
+/* Projects Section - Highlighted List Style */
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
 
-.terminal-header {
-    background: rgba(88, 166, 255, 0.08);
-    padding: 0.75rem 1rem;
+.project-item {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.project-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.project-item:hover::before {
+    transform: scaleY(1);
+}
+
+.project-item:hover {
+    background: rgba(88, 166, 255, 0.03);
+    padding-left: 2rem;
+}
+
+.project-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: rgba(88, 166, 255, 0.2);
+    line-height: 1;
+    font-family: 'Courier New', monospace;
+}
+
+.project-item:hover .project-number {
+    color: var(--accent);
+}
+
+.project-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.project-header-inline {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    border-bottom: 1px solid var(--border);
-}
-
-.terminal-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--accent);
-}
-
-.terminal-title {
-    color: var(--text-dim);
-    font-size: 0.85rem;
-    margin-left: 0.5rem;
-}
-
-.terminal-body {
-    padding: 1.5rem;
-    font-family: 'Courier New', monospace;
-    font-size: 0.9rem;
-}
-
-.terminal-line {
-    display: flex;
-    margin-bottom: 1rem;
-    align-items: flex-start;
-}
-
-.terminal-prompt {
-    color: var(--accent);
-    margin-right: 0.75rem;
-    flex-shrink: 0;
-}
-
-.terminal-content {
-    flex: 1;
-}
-
-.project-name {
-    color: var(--text);
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-}
-
-.project-desc {
-    color: var(--text-dim);
-    margin-bottom: 0.5rem;
-    font-size: 0.85rem;
-}
-
-.project-links {
-    display: flex;
     gap: 1rem;
     flex-wrap: wrap;
 }
 
-.project-links a {
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 0.85rem;
+.project-header-inline h3 {
+    font-size: 1.4rem;
+    color: var(--text);
+    margin: 0;
 }
 
-.project-links a:hover {
-    text-decoration: underline;
+.project-tech-inline {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tech-pill {
+    padding: 0.25rem 0.75rem;
+    background: rgba(88, 166, 255, 0.1);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
+.project-description {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.project-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.project-action-link {
+    padding: 0.5rem 1.25rem;
+    background: transparent;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    white-space: nowrap;
+    text-align: center;
+    min-width: 120px;
+}
+
+.project-action-link:hover {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+    transform: translateX(-4px);
+}
+
+.project-action-link.primary {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+}
+
+.project-action-link.primary:hover {
+    background: var(--accent-dim);
+}
+
+.project-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
 }
 
 /* Contact Section */
@@ -407,9 +482,22 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .terminal-body {
-        padding: 1rem;
-        font-size: 0.8rem;
+    .project-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .project-number {
+        font-size: 2rem;
+    }
+
+    .project-actions {
+        align-items: flex-start;
+    }
+
+    .project-action-link {
+        width: 100%;
     }
 
     .contact-grid {

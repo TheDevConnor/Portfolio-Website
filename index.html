@@ -11,217 +11,192 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-    <main class="container">
-        <!-- Hero Section -->
-        <div class="hero">
-            <div class="profile-img-wrapper">
-                <img src="img/image.png" alt="Connor Harris" class="profile-img"
-                    onerror="this.style.display='none'">
-            </div>
-            <div class="hero-content">
-                <h1>Connor Harris</h1>
-                <p class="hero-subtitle">Systems Programmer • <span id="age"></span> years old • <span
-                        id="experience"></span> years experience</p>
-                <p class="hero-bio">Currently developing <strong>Zura</strong> (C++ → x86 assembly) and
-                    <strong>Luma</strong> (C → LLVM) — two programming languages focused on clean syntax and
-                    system-level control. CS student at Florida Polytechnic University specializing in compiler design
-                    and low-level systems programming.</p>
-                <a href="Connor_Harris_CS_Resume.pdf" download class="resume-btn">
+<main class="container">
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="profile-img-wrapper">
+            <img src="img/image.png" alt="Connor Harris" class="profile-img" onerror="this.style.display='none'">
+        </div>
+        <div class="hero-content">
+            <h1>Connor Harris</h1>
+            <p class="hero-subtitle">Systems Programmer • <span
+                    id="experience"></span> years experience</p>
+            <p class="hero-bio">Currently developing <strong>Zura</strong> (C++ → x86 assembly) and
+                <strong>Luma</strong> (C → LLVM) — two programming languages focused on clean syntax and system-level
+                control. CS student at Florida Polytechnic University specializing in compiler design and low-level
+                systems programming.
+            </p>
+            <div class="resume-buttons">
+                <a href="Connor_Harris_CS_Resume.pdf" target="_blank" class="resume-btn view">
+                    <i class="fas fa-eye"></i>
+                    View Resume
+                </a>
+                <a href="Connor_Harris_CS_Resume.pdf" download class="resume-btn download">
                     <i class="fas fa-download"></i>
-                    Download Resume
+                    Download
                 </a>
             </div>
         </div>
+    </div>
 
-        <!-- About Section -->
-        <section id="about" style="display: none;">
-            <h2>About</h2>
-            <div class="about-content">
-                <p>I'm a self-taught programmer passionate about building developer tools and programming languages. My
-                    focus is on low-level systems programming, compiler design, and creating tools that make developers'
-                    lives easier.</p>
-                <p>Currently working on Zura (C++ compiled to x86 assembly) and Luma (C compiled with LLVM), both
-                    designed to offer clean syntax and powerful system-level capabilities.</p>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2>Skills & Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Languages</h3>
-                    <div class="skill-list">
-                        <span class="skill">C++</span>
-                        <span class="skill">C</span>
-                        <span class="skill">Python</span>
-                        <span class="skill">JavaScript</span>
-                        <span class="skill">Assembly</span>
-                        <span class="skill">Zig</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Specializations</h3>
-                    <div class="skill-list">
-                        <span class="skill">Compiler Design</span>
-                        <span class="skill">LLVM</span>
-                        <span class="skill">Systems Programming</span>
-                        <span class="skill">x86 Assembly</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools</h3>
-                    <div class="skill-list">
-                        <span class="skill">Git/GitHub</span>
-                        <span class="skill">Linux/Unix</span>
-                        <span class="skill">VS Code</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects">
-            <h2>Featured Projects</h2>
-
-            <div class="terminal">
-                <div class="terminal-header">
-                    <div class="terminal-dot"></div>
-                    <div class="terminal-dot" style="background: #fbbf24;"></div>
-                    <div class="terminal-dot" style="background: #ef4444;"></div>
-                    <span class="terminal-title">~/projects</span>
-                </div>
-                <div class="terminal-body">
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">$</span>
-                        <div class="terminal-content">
-                            <div class="project-name">ls -la zura/</div>
-                            <div class="project-desc">Low-level programming language written in C++ and compiled to x86
-                                assembly. Designed for clean, simple system-level programming.</div>
-                            <div class="project-links">
-                                <a href="https://github.com/TheDevConnor/Zura-Transpiled/" target="_blank">[GitHub]</a>
-                                <a href="https://www.zuralang.com/docs.html" target="_blank">[Docs]</a>
-                                <a href="https://www.zuralang.com/" target="_blank">[Website]</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">$</span>
-                        <div class="terminal-content">
-                            <div class="project-name">ls -la luma/</div>
-                            <div class="project-desc">Modern low-level programming language written in C and compiled
-                                with LLVM. Focus on performance and developer experience.</div>
-                            <div class="project-links">
-                                <a href="https://github.com/TheDevConnor/Luma" target="_blank">[GitHub]</a>
-                                <a href="https://luma-website-mu.vercel.app/" target="_blank">[Website]</a>
-                                <a href="https://luma-docs-five.vercel.app/" target="_blank">[Docs]</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">$</span>
-                        <div class="terminal-content">
-                            <div class="project-name">ls -la chess-engine/</div>
-                            <div class="project-desc">Chess engine in Python with advanced algorithms for move
-                                generation and position evaluation.</div>
-                            <div class="project-links">
-                                <a href="https://github.com/TheDevConnor/Basic-Python-Chess-Engine"
-                                    target="_blank">[GitHub]</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">$</span>
-                        <div class="terminal-content">
-                            <div class="project-name">ls -la terminal-website/</div>
-                            <div class="project-desc">Terminal-based portfolio with command-line interaction.</div>
-                            <div class="project-links">
-                                <a href="https://thedevconnor.github.io/TerminalWebsite/" target="_blank">[Live]</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">$</span>
-                        <div class="terminal-content">
-                            <div class="project-name">ls -la wordle-clone/</div>
-                            <div class="project-desc">Fully functional Wordle clone with smooth animations and
-                                responsive design.</div>
-                            <div class="project-links">
-                                <a href="https://thedevconnor.github.io/Wordle-Clone/" target="_blank">[Play]</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">$</span>
-                        <div class="terminal-content" style="color: var(--accent);">_</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2>Get In Touch</h2>
-
-            <div class="contact-grid">
-                <div class="contact-form-wrapper">
-                    <p>I'm open to opportunities, collaborations, and interesting conversations. Feel free to reach out!
-                    </p>
-                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/movklaqv" method="POST">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required placeholder="Your name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required placeholder="your@email.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required
-                                placeholder="Your message..."></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">
-                            <span class="btn-text">Send Message</span>
-                            <span class="btn-loading" style="display: none;">Sending...</span>
-                        </button>
-                        <div class="form-status" id="formStatus"></div>
-                    </form>
-                </div>
-
-                <div class="contact-links-wrapper">
-                    <h3>Find Me Online</h3>
-                    <div class="contact-links">
-                        <a href="https://github.com/TheDevConnor" class="contact-link" target="_blank">
-                            <i class="fab fa-github"></i>
-                            github.com/TheDevConnor
-                        </a>
-                        <a href="https://www.youtube.com/@thedevconnor" class="contact-link" target="_blank">
-                            <i class="fab fa-youtube"></i>
-                            @thedevconnor
-                        </a>
-                        <a href="#" class="contact-link">
-                            <i class="fab fa-discord"></i>
-                            thedevconnor
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; <span id="year"></span> Connor Harris</p>
+    <!-- About Section -->
+    <section id="about" style="display: none;">
+        <h2>About</h2>
+        <div class="about-content">
+            <p>I'm a self-taught programmer passionate about building developer tools and programming languages. My
+                focus is on low-level systems programming, compiler design, and creating tools that make developers'
+                lives easier.</p>
+            <p>Currently working on Zura (C++ compiled to x86 assembly) and Luma (C compiled with LLVM), both designed
+                to offer clean syntax and powerful system-level capabilities.</p>
         </div>
-    </footer>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Skills & Technologies</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Languages</h3>
+                <div class="skill-list">
+                    <span class="skill">C++</span>
+                    <span class="skill">C</span>
+                    <span class="skill">Python</span>
+                    <span class="skill">JavaScript</span>
+                    <span class="skill">Assembly</span>
+                    <span class="skill">Zig</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Specializations</h3>
+                <div class="skill-list">
+                    <span class="skill">Compiler Design</span>
+                    <span class="skill">LLVM</span>
+                    <span class="skill">Systems Programming</span>
+                    <span class="skill">x86 Assembly</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Tools</h3>
+                <div class="skill-list">
+                    <span class="skill">Git/GitHub</span>
+                    <span class="skill">Linux/Unix</span>
+                    <span class="skill">VS Code</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Featured Projects</h2>
+
+        <div class="projects-list">
+            <!-- Luma -->
+            <div class="project-item">
+                <div class="project-number">01</div>
+                <div class="project-main">
+                    <div class="project-header-inline">
+                        <h3>Luma Programming Language</h3>
+                        <div class="project-tech-inline">
+                            <span class="tech-pill">C</span>
+                            <span class="tech-pill">LLVM</span>
+                        </div>
+                    </div>
+                    <p class="project-description">Modern low-level language using LLVM backend for optimization and
+                        portability. Implementing advanced type system, memory safety features, and compile-time
+                        optimizations with active development.</p>
+                </div>
+                <div class="project-actions">
+                    <a href="https://luma-website-mu.vercel.app/" target="_blank"
+                        class="project-action-link primary">Visit Site</a>
+                    <a href="https://github.com/TheDevConnor/Luma" target="_blank"
+                        class="project-action-link">View Code</a>
+                    <a href="https://luma-docs-five.vercel.app/" target="_blank" class="project-action-link">Docs</a>
+                </div>
+            </div>
+
+            <div class="project-divider"></div>
+
+            <!-- Chess Engine -->
+            <div class="project-item">
+                <div class="project-number">02</div>
+                <div class="project-main">
+                    <div class="project-header-inline">
+                        <h3>Chess Engine</h3>
+                        <div class="project-tech-inline">
+                            <span class="tech-pill">Python</span>
+                            <span class="tech-pill">Algorithms</span>
+                            <span class="tech-pill">Game</span>
+                        </div>
+                    </div>
+                    <p class="project-description">A chess engine featuring advanced algorithms for move
+                        generation, position evaluation, and AI gameplay using minimax with board state optimization.
+                    </p>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/TheDevConnor/Basic-Python-Chess-Engine" target="_blank"
+                        class="project-action-link primary">View Code</a>
+                </div>
+            </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Get In Touch</h2>
+
+        <div class="contact-grid">
+            <div class="contact-form-wrapper">
+                <p>I'm open to opportunities, collaborations, and interesting conversations. Feel free to reach out!</p>
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/movklaqv" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required
+                            placeholder="Your message..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-loading" style="display: none;">Sending...</span>
+                    </button>
+                    <div class="form-status" id="formStatus"></div>
+                </form>
+            </div>
+
+            <div class="contact-links-wrapper">
+                <h3>Find Me Online</h3>
+                <div class="contact-links">
+                    <a href="https://github.com/TheDevConnor" class="contact-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        github.com/TheDevConnor
+                    </a>
+                    <a href="https://www.youtube.com/@thedevconnor" class="contact-link" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                        @thedevconnor
+                    </a>
+                    <a href="#" class="contact-link">
+                        <i class="fab fa-discord"></i>
+                        thedevconnor
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; <span id="year"></span> Connor Harris</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 
 </html>

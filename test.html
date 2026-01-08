@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connor Harris - Portfolio</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0d1117;
+            --bg-light: #161b22;
+            --text: #c9d1d9;
+            --text-dim: #8b949e;
+            --accent: #58a6ff;
+            --accent-dim: #1f6feb;
+            --border: rgba(88, 166, 255, 0.12);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        main {
+            padding: 6rem 0 4rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 5rem;
+        }
+
+        .profile-img-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 200px;
+            border-radius: 8px;
+            object-fit: cover;
+            object-position: center;
+            border: 2px solid var(--border);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-bio {
+            color: var(--text-dim);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .hero-bio strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .resume-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .resume-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .resume-btn.view {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .resume-btn.view:hover {
+            background: var(--accent-dim);
+            transform: translateY(-2px);
+        }
+
+        .resume-btn.download {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--border);
+        }
+
+        .resume-btn.download:hover {
+            background: rgba(88, 166, 255, 0.1);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .resume-btn i {
+            font-size: 0.9rem;
+        }
+
+        /* Section Headers */
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 2.5rem;
+        }
+
+        .section-intro {
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .section-intro strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* About Section */
+        .about-content p {
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill {
+            padding: 0.5rem 1rem;
+            background: rgba(88, 166, 255, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        /* Projects Section - Highlighted List Style */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .project-item {
+            display: grid;
+            grid-template-columns: 60px 1fr auto;
+            gap: 1.5rem;
+            padding: 2rem 1.5rem;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .project-item:hover {
+            background: rgba(88, 166, 255, 0.03);
+            padding-left: 2rem;
+        }
+
+        .project-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: rgba(88, 166, 255, 0.2);
+            line-height: 1;
+            font-family: 'Courier New', monospace;
+        }
+
+        .project-item:hover .project-number {
+            color: var(--accent);
+        }
+
+        .project-main {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .project-header-inline {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-header-inline h3 {
+            font-size: 1.4rem;
+            color: var(--text);
+            margin: 0;
+        }
+
+        .project-tech-inline {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-pill {
+            padding: 0.25rem 0.75rem;
+            background: rgba(88, 166, 255, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .project-description {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .project-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .project-action-link {
+            padding: 0.5rem 1.25rem;
+            background: transparent;
+            color: var(--accent);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            white-space: nowrap;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .project-action-link:hover {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+            transform: translateX(-4px);
+        }
+
+        .project-action-link.primary {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+        }
+
+        .project-action-link.primary:hover {
+            background: var(--accent-dim);
+        }
+
+        .project-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border), transparent);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form-wrapper p {
+            margin-bottom: 1.5rem;
+            color: var(--text-dim);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.75rem;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: 6px;
+            padding: 0.85rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-dim);
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-status {
+            padding: 0.75rem;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .form-status.success {
+            display: block;
+            background: rgba(88, 166, 255, 0.1);
+            color: var(--accent);
+            border: 1px solid var(--border);
+        }
+
+        .form-status.error {
+            display: block;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .contact-links-wrapper h3 {
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.75rem;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .contact-link i {
+            color: var(--accent);
+            width: 20px;
+        }
+
+        .contact-link:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .profile-img {
+                width: 150px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1.5rem 1rem;
+            }
+
+            .project-number {
+                font-size: 2rem;
+            }
+
+            .project-actions {
+                align-items: flex-start;
+            }
+
+            .project-action-link {
+                width: 100%;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            section {
+                margin-bottom: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="profile-img-wrapper">
+                <img src="img/image_copy.png" alt="Connor Harris" class="profile-img" onerror="this.style.display='none'">
+            </div>
+            <div class="hero-content">
+                <h1>Connor Harris</h1>
+                <p class="hero-subtitle">Systems Programmer • <span id="age"></span> years old • <span id="experience"></span> years experience</p>
+                <p class="hero-bio">Currently developing <strong>Zura</strong> (C++ → x86 assembly) and <strong>Luma</strong> (C → LLVM) — two programming languages focused on clean syntax and system-level control. CS student at Florida Polytechnic University specializing in compiler design and low-level systems programming.</p>
+                <div class="resume-buttons">
+                    <a href="Connor_Harris_Resume.pdf" target="_blank" class="resume-btn view">
+                        <i class="fas fa-eye"></i>
+                        View Resume
+                    </a>
+                    <a href="Connor_Harris_Resume.pdf" download class="resume-btn download">
+                        <i class="fas fa-download"></i>
+                        Download
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section id="about" style="display: none;">
+            <h2>About</h2>
+            <div class="about-content">
+                <p>I'm a self-taught programmer passionate about building developer tools and programming languages. My focus is on low-level systems programming, compiler design, and creating tools that make developers' lives easier.</p>
+                <p>Currently working on Zura (C++ compiled to x86 assembly) and Luma (C compiled with LLVM), both designed to offer clean syntax and powerful system-level capabilities.</p>
+            </div>
+        </section>
+
+        /* Skills Section */
+        <section id="skills">
+            <h2>Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-list">
+                        <span class="skill">C++</span>
+                        <span class="skill">C</span>
+                        <span class="skill">Python</span>
+                        <span class="skill">JavaScript</span>
+                        <span class="skill">Assembly</span>
+                        <span class="skill">Zig</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Specializations</h3>
+                    <div class="skill-list">
+                        <span class="skill">Compiler Design</span>
+                        <span class="skill">LLVM</span>
+                        <span class="skill">Systems Programming</span>
+                        <span class="skill">x86 Assembly</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <div class="skill-list">
+                        <span class="skill">Git/GitHub</span>
+                        <span class="skill">Linux/Unix</span>
+                        <span class="skill">VS Code</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <p class="section-intro">A selection of projects showcasing systems programming, compiler design, and software development.</p>
+            
+            <div class="projects-list">
+                <!-- Zura -->
+                <div class="project-item">
+                    <div class="project-number">01</div>
+                    <div class="project-main">
+                        <div class="project-header-inline">
+                            <h3>Zura Programming Language</h3>
+                            <div class="project-tech-inline">
+                                <span class="tech-pill">C++</span>
+                                <span class="tech-pill">x86 Assembly</span>
+                            </div>
+                        </div>
+                        <p class="project-description">A low-level systems programming language compiled to x86 assembly. Built complete compiler pipeline including lexer, parser, semantic analyzer, and code generator with comprehensive documentation.</p>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://www.zuralang.com/" target="_blank" class="project-action-link primary">Visit Site</a>
+                        <a href="https://github.com/TheDevConnor/Zura-Transpiled/" target="_blank" class="project-action-link">GitHub</a>
+                        <a href="https://www.zuralang.com/docs.html" target="_blank" class="project-action-link">Docs</a>
+                    </div>
+                </div>
+
+                <div class="project-divider"></div>
+
+                <!-- Luma -->
+                <div class="project-item">
+                    <div class="project-number">02</div>
+                    <div class="project-main">
+                        <div class="project-header-inline">
+                            <h3>Luma Programming Language</h3>
+                            <div class="project-tech-inline">
+                                <span class="tech-pill">C</span>
+                                <span class="tech-pill">LLVM</span>
+                            </div>
+                        </div>
+                        <p class="project-description">Modern low-level language using LLVM backend for optimization and portability. Implementing advanced type system, memory safety features, and compile-time optimizations with active development.</p>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://luma-website-mu.vercel.app/" target="_blank" class="project-action-link primary">Visit Site</a>
+                        <a href="https://github.com/TheDevConnor/Luma" target="_blank" class="project-action-link">GitHub</a>
+                        <a href="https://luma-docs-five.vercel.app/" target="_blank" class="project-action-link">Docs</a>
+                    </div>
+                </div>
+
+                <div class="project-divider"></div>
+
+                <!-- Chess Engine -->
+                <div class="project-item">
+                    <div class="project-number">03</div>
+                    <div class="project-main">
+                        <div class="project-header-inline">
+                            <h3>Chess Engine</h3>
+                            <div class="project-tech-inline">
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">Algorithms</span>
+                            </div>
+                        </div>
+                        <p class="project-description">Sophisticated chess engine featuring advanced algorithms for move generation, position evaluation, and AI gameplay using minimax with board state optimization.</p>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/TheDevConnor/Basic-Python-Chess-Engine" target="_blank" class="project-action-link primary">View Code</a>
+                    </div>
+                </div>
+
+                <div class="project-divider"></div>
+
+                <!-- Terminal Website -->
+                <div class="project-item">
+                    <div class="project-number">04</div>
+                    <div class="project-main">
+                        <div class="project-header-inline">
+                            <h3>Terminal Portfolio</h3>
+                            <div class="project-tech-inline">
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">Interactive</span>
+                            </div>
+                        </div>
+                        <p class="project-description">Interactive terminal-based portfolio website with command-line style interaction, demonstrating creative use of web technologies.</p>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://thedevconnor.github.io/TerminalWebsite/" target="_blank" class="project-action-link primary">Try Live</a>
+                    </div>
+                </div>
+
+                <div class="project-divider"></div>
+
+                <!-- Wordle Clone -->
+                <div class="project-item">
+                    <div class="project-number">05</div>
+                    <div class="project-main">
+                        <div class="project-header-inline">
+                            <h3>Wordle Clone</h3>
+                            <div class="project-tech-inline">
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">Game</span>
+                            </div>
+                        </div>
+                        <p class="project-description">Fully functional Wordle game clone featuring smooth animations, responsive design, and intuitive user interface.</p>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://thedevconnor.github.io/Wordle-Clone/" target="_blank" class="project-action-link primary">Play Game</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-form-wrapper">
+                    <p>I'm open to opportunities, collaborations, and interesting conversations. Feel free to reach out!</p>
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/movklaqv" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Your message..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-loading" style="display: none;">Sending...</span>
+                        </button>
+                        <div class="form-status" id="formStatus"></div>
+                    </form>
+                </div>
+
+                <div class="contact-links-wrapper">
+                    <h3>Find Me Online</h3>
+                    <div class="contact-links">
+                        <a href="https://github.com/TheDevConnor" class="contact-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            github.com/TheDevConnor
+                        </a>
+                        <a href="https://www.youtube.com/@thedevconnor" class="contact-link" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                            @thedevconnor
+                        </a>
+                        <a href="#" class="contact-link">
+                            <i class="fab fa-discord"></i>
+                            thedevconnor
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Connor Harris</p>
+        </div>
+    </footer>
+
+    <script>
+        // Calculate dynamic values
+        function calculateAge(birthDate) {
+            const today = new Date();
+            const birth = new Date(birthDate);
+            let age = today.getFullYear() - birth.getFullYear();
+            const monthDiff = today.getMonth() - birth.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+                age--;
+            }
+            
+            return age;
+        }
+
+        function calculateExperience(startYear) {
+            const currentYear = new Date().getFullYear();
+            return currentYear - startYear;
+        }
+
+        // Update dynamic content
+        document.addEventListener('DOMContentLoaded', function() {
+            const age = calculateAge('2004-11-24');
+            const ageElement = document.getElementById('age');
+            if (ageElement) ageElement.textContent = age;
+            
+            const experience = calculateExperience(2019);
+            const expElement = document.getElementById('experience');
+            if (expElement) expElement.textContent = experience;
+            
+            const yearElement = document.getElementById('year');
+            if (yearElement) yearElement.textContent = new Date().getFullYear();
+        });
+
+        // Contact form handling
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitBtn = this.querySelector('.submit-btn');
+                const btnText = submitBtn.querySelector('.btn-text');
+                const btnLoading = submitBtn.querySelector('.btn-loading');
+                const formStatus = document.getElementById('formStatus');
+                
+                submitBtn.disabled = true;
+                btnText.style.display = 'none';
+                btnLoading.style.display = 'inline';
+                formStatus.style.display = 'none';
+                formStatus.className = 'form-status';
+                
+                try {
+                    const formData = new FormData(this);
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    
+                    if (response.ok) {
+                        formStatus.textContent = 'Thanks for your message! I\'ll get back to you soon.';
+                        formStatus.classList.add('success');
+                        this.reset();
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (error) {
+                    formStatus.textContent = 'Oops! There was a problem. Please try again.';
+                    formStatus.classList.add('error');
+                } finally {
+                    submitBtn.disabled = false;
+                    btnText.style.display = 'inline';
+                    btnLoading.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
