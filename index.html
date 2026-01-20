@@ -19,10 +19,9 @@
         </div>
         <div class="hero-content">
             <h1>Connor Harris</h1>
-            <p class="hero-subtitle">Systems Programmer • <span
-                    id="experience"></span> years experience</p>
-            <p class="hero-bio">Currently developing <strong>Zura</strong> (C++ → x86 assembly) and
-                <strong>Luma</strong> (C → LLVM) — two programming languages focused on clean syntax and system-level
+            <p class="hero-subtitle">Systems Programmer • <span id="experience"></span> years experience</p>
+            <p class="hero-bio">Currently developing <strong>Luma</strong> (C → LLVM) — a programming language focused
+                on clean syntax and system-level
                 control. CS student at Florida Polytechnic University specializing in compiler design and low-level
                 systems programming.
             </p>
@@ -38,18 +37,6 @@
             </div>
         </div>
     </div>
-
-    <!-- About Section -->
-    <section id="about" style="display: none;">
-        <h2>About</h2>
-        <div class="about-content">
-            <p>I'm a self-taught programmer passionate about building developer tools and programming languages. My
-                focus is on low-level systems programming, compiler design, and creating tools that make developers'
-                lives easier.</p>
-            <p>Currently working on Zura (C++ compiled to x86 assembly) and Luma (C compiled with LLVM), both designed
-                to offer clean syntax and powerful system-level capabilities.</p>
-        </div>
-    </section>
 
     <!-- Skills Section -->
     <section id="skills">
@@ -92,6 +79,7 @@
 
         <div class="projects-list">
             <!-- Luma -->
+            <!-- Luma -->
             <div class="project-item">
                 <div class="project-number">01</div>
                 <div class="project-main">
@@ -106,12 +94,27 @@
                     <p class="project-description">Modern low-level language using LLVM backend for optimization and
                         portability. Implementing advanced type system, memory safety features, and compile-time
                         optimizations with active development.</p>
+
+                    <!-- Lumix Subsection -->
+                    <div class="project-subsection">
+                        <div class="subsection-header">
+                            <h4>Lumix Build Tool</h4>
+                            <div class="project-tech-inline">
+                                <span class="tech-pill">Luma</span>
+                                <span class="tech-pill">Build System</span>
+                            </div>
+                        </div>
+                        <p class="subsection-description">Custom build tool designed specifically for Luma. Handles
+                            compilation, dependency management, and project configuration.</p>
+                        <a href="https://github.com/Luma-Programming-Language/Lumix" target="_blank" class="subsection-link">View
+                            Lumix Code →</a>
+                    </div>
                 </div>
                 <div class="project-actions">
                     <a href="https://luma-website-mu.vercel.app/" target="_blank"
                         class="project-action-link primary">Visit Site</a>
-                    <a href="https://github.com/TheDevConnor/Luma" target="_blank"
-                        class="project-action-link">View Code</a>
+                    <a href="https://github.com/Luma-Programming-Language/Luma" target="_blank" class="project-action-link">View
+                        Code</a>
                     <a href="https://luma-docs-five.vercel.app/" target="_blank" class="project-action-link">Docs</a>
                 </div>
             </div>
