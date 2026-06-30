@@ -181,6 +181,11 @@
                 </div>
         </section>
 
+        <section id="blog">
+            <h2>Blog</h2>
+            <div class="blog-list" id="blogList"></div>
+        </section>
+
         <section id="contact">
             <h2>Get In Touch</h2>
 
@@ -243,12 +248,21 @@
         </section>
     </main>
 
+    <div class="blog-overlay" id="blogOverlay"></div>
+    <div class="blog-modal" id="blogModal">
+        <div class="blog-modal-inner">
+            <button class="blog-modal-close" id="blogModalClose" aria-label="Close">&times;</button>
+            <div id="blogPostContent"></div>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <p>&copy; <span id="year"></span> Connor Harris</p>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="script.js"></script>
 </body>
 

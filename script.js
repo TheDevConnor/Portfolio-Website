@@ -29,6 +29,115 @@ document.addEventListener('DOMContentLoaded', function () {
     if (yearElement) yearElement.textContent = new Date().getFullYear();
 });
 
+const blogList = document.getElementById('blogList');
+
+function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function renderBlogPosts(posts) {
+    if (!blogList) return;
+
+    if (!posts || posts.length === 0) {
+        blogList.innerHTML = '<p class="blog-empty">No posts yet. Coming soon!</p>';
+        return;
+    }
+
+    blogList.innerHTML = posts.map(post => `
+        <div class="blog-card" data-id="${post.id}">
+            <div class="blog-card-header">
+                <h3 class="blog-card-title">${post.title}</h3>
+                <span class="blog-card-date">${formatDate(post.date)}</span>
+            </div>
+            <p class="blog-card-excerpt">${post.excerpt}</p>
+            <div class="blog-card-tags">
+                ${post.tags.map(tag => `<span class="blog-card-tag">${tag}</span>`).join('')}
+            </div>
+        </div>
+    `).join('');
+
+    blogList.querySelectorAll('.blog-card').forEach(card => {
+        card.addEventListener('click', () => openBlogPost(parseInt(card.dataset.id), posts));
+    });
+}
+
+function parseMarkdown(md, basePath) {
+    const renderer = new marked.Renderer();
+    renderer.image = ({ href, title, text }) => {
+        let src = href;
+        if (!src.startsWith('http') && !src.startsWith('/')) {
+            src = basePath + src;
+        }
+        const attrs = `src="${src}" alt="${text || ''}"`;
+        if (title) {
+            return `<img ${attrs} title="${title}" loading="lazy">`;
+        }
+        return `<img ${attrs} loading="lazy">`;
+    };
+    renderer.link = ({ href, title, text }) => {
+        const attrs = `href="${href}" target="_blank" rel="noopener noreferrer"`;
+        if (title) {
+            return `<a ${attrs} title="${title}">${text}</a>`;
+        }
+        return `<a ${attrs}>${text}</a>`;
+    };
+    return marked.parse(md, { renderer });
+}
+
+function openBlogPost(id, posts) {
+    const post = posts.find(p => p.id === id);
+    if (!post) return;
+
+    const content = document.getElementById('blogPostContent');
+    const modal = document.getElementById('blogModal');
+    const overlay = document.getElementById('blogOverlay');
+
+    content.innerHTML = `
+        <h2 class="blog-post-title">${post.title}</h2>
+        <span class="blog-post-date">${formatDate(post.date)}</span>
+        <div class="blog-loading">Loading...</div>
+    `;
+    modal.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    fetch('blog/' + post.file)
+        .then(res => {
+            if (!res.ok) throw new Error('Failed to load post');
+            return res.text();
+        })
+        .then(md => {
+            content.querySelector('.blog-loading').remove();
+            const basePath = 'blog/' + post.file.substring(0, post.file.lastIndexOf('/') + 1);
+            content.insertAdjacentHTML('beforeend', `<div class="blog-post-content">${parseMarkdown(md, basePath)}</div>`);
+        })
+        .catch(() => {
+            content.querySelector('.blog-loading').remove();
+            content.insertAdjacentHTML('beforeend', '<p class="blog-empty">Failed to load post.</p>');
+        });
+}
+
+function closeBlogModal() {
+    const modal = document.getElementById('blogModal');
+    const overlay = document.getElementById('blogOverlay');
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+document.getElementById('blogModalClose').addEventListener('click', closeBlogModal);
+document.getElementById('blogOverlay').addEventListener('click', closeBlogModal);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBlogModal(); });
+
+fetch('blog/posts.json')
+    .then(res => {
+        if (!res.ok) throw new Error('Failed to load posts');
+        return res.json();
+    })
+    .then(renderBlogPosts)
+    .catch(() => renderBlogPosts([]));
+
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', async function (e) {
