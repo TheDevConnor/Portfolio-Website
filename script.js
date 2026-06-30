@@ -85,10 +85,20 @@ function parseMarkdown(md, basePath) {
     return marked.parse(md, { renderer });
 }
 
+const isLargeScreen = () => window.innerWidth > 768;
+
 function openBlogPost(id, posts) {
     const post = posts.find(p => p.id === id);
     if (!post) return;
 
+    if (isLargeScreen()) {
+        window.location.hash = `#blog/post-${id}`;
+    } else {
+        openBlogPostModal(post);
+    }
+}
+
+function openBlogPostModal(post) {
     const content = document.getElementById('blogPostContent');
     const modal = document.getElementById('blogModal');
     const overlay = document.getElementById('blogOverlay');
@@ -118,6 +128,67 @@ function openBlogPost(id, posts) {
         });
 }
 
+function showBlogPostPage(post) {
+    const page = document.getElementById('blogPostPage');
+    const content = document.getElementById('blogPostPageContent');
+
+    document.body.classList.add('blog-view');
+
+    content.innerHTML = `
+        <h2 class="blog-post-title">${post.title}</h2>
+        <span class="blog-post-date">${formatDate(post.date)}</span>
+        <div class="blog-loading">Loading...</div>
+    `;
+    page.classList.add('active');
+
+    document.body.style.overflow = '';
+    window.scrollTo(0, 0);
+
+    fetch('blog/' + post.file)
+        .then(res => {
+            if (!res.ok) throw new Error('Failed to load post');
+            return res.text();
+        })
+        .then(md => {
+            const loading = content.querySelector('.blog-loading');
+            if (loading) loading.remove();
+            const basePath = 'blog/' + post.file.substring(0, post.file.lastIndexOf('/') + 1);
+            content.insertAdjacentHTML('beforeend', `<div class="blog-post-content">${parseMarkdown(md, basePath)}</div>`);
+        })
+        .catch(() => {
+            const loading = content.querySelector('.blog-loading');
+            if (loading) loading.remove();
+            content.insertAdjacentHTML('beforeend', '<p class="blog-empty">Failed to load post.</p>');
+        });
+}
+
+function hideBlogPostPage() {
+    const page = document.getElementById('blogPostPage');
+
+    page.classList.remove('active');
+    document.body.classList.remove('blog-view');
+}
+
+function handleHashChange() {
+    const hash = window.location.hash;
+
+    if (hash.startsWith('#blog/post-')) {
+        const id = parseInt(hash.replace('#blog/post-', ''), 10);
+        const post = blogPosts.find(p => p.id === id);
+        if (post) {
+            if (isLargeScreen()) {
+                showBlogPostPage(post);
+            } else {
+                hideBlogPostPage();
+                openBlogPostModal(post);
+            }
+            return;
+        }
+    }
+
+    hideBlogPostPage();
+}
+
 function closeBlogModal() {
     const modal = document.getElementById('blogModal');
     const overlay = document.getElementById('blogOverlay');
@@ -128,14 +199,31 @@ function closeBlogModal() {
 
 document.getElementById('blogModalClose').addEventListener('click', closeBlogModal);
 document.getElementById('blogOverlay').addEventListener('click', closeBlogModal);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBlogModal(); });
+document.getElementById('blogPostBack').addEventListener('click', () => {
+    window.location.hash = '';
+});
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (window.location.hash.startsWith('#blog/post-')) {
+            window.location.hash = '';
+        }
+        closeBlogModal();
+    }
+});
+window.addEventListener('hashchange', handleHashChange);
+
+let blogPosts = [];
 
 fetch('blog/posts.json')
     .then(res => {
         if (!res.ok) throw new Error('Failed to load posts');
         return res.json();
     })
-    .then(renderBlogPosts)
+    .then(posts => {
+        blogPosts = posts;
+        renderBlogPosts(posts);
+        handleHashChange();
+    })
     .catch(() => renderBlogPosts([]));
 
 const contactForm = document.getElementById('contactForm');
